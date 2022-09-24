@@ -1,7 +1,7 @@
 
 .calculator {
     outline: solid black;
-    height: 500px;
+    height: 700px;
     width: 500px;
     margin: auto;
     text-align: center;
@@ -11,30 +11,39 @@
 }
 
 .calculator > div {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
 }
 
 .output {
     color: white;
-    font-size: 50px;
-    text-align: center;
-    padding-top: 90px;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .buttons {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
-    text-align: center;
     justify-content: center;
 }
 
+
 .buttons > div {
     width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin: 5px;
     color:white;
     font-size: 25px;
     font-weight: 900;
+}
+
+.num, .func {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .num {
@@ -43,5 +52,9 @@
 
 .func {
     background-color: #ff9500;
+}
+
+.btn:hover {
+    filter: brightness(120%);
 }
 
