@@ -4,7 +4,7 @@ const clear = document.querySelector('.clear');
 const equal = document.querySelector('.eq');
 const op = document.querySelectorAll('.func');
 let num = "";
-let num2;
+let num2 = "";
 let operator = "";
 let result = 0;
 let sym = /[ -\/:-@\[-\`÷x{-~]/gm
@@ -15,11 +15,11 @@ buttons.forEach(btn => {
         // output.textContent = num;
         
         if (num.length !== 0 && operator.length !== 0) {
-            num2 = e.target.textContent;
+            num2 += e.target.textContent;
             output.textContent = num2;
         }
         else {
-            num = e.target.textContent;
+            num += e.target.textContent;
             output.textContent = num;
         }
 
@@ -44,6 +44,8 @@ op.forEach(btn => {
 // Clear button
 clear.addEventListener('click', () => {
     output.textContent = "0000";
+    num2 = ""
+    operator = "";
     num = "";
 })
 
