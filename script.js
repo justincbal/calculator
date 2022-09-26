@@ -1,23 +1,41 @@
-const buttons = document.querySelectorAll('.btn');
+const buttons = document.querySelectorAll('.num');
 const output = document.querySelector('.output');
 const clear = document.querySelector('.clear');
 const equal = document.querySelector('.eq');
 const op = document.querySelectorAll('.func');
 let num = "";
-let operator;
+let num2;
+let operator = "";
 let result = 0;
+let sym = /[ -\/:-@\[-\`÷x{-~]/gm
 
 buttons.forEach(btn => {
     btn.addEventListener('click', e => {
-        num += e.target.textContent;
-        output.textContent = num;
-        console.log(num);
+        // num = e.target.textContent;
+        // output.textContent = num;
+        
+        if (num.length !== 0 && operator.length !== 0) {
+            num2 = e.target.textContent;
+            output.textContent = num2;
+        }
+        else {
+            num = e.target.textContent;
+            output.textContent = num;
+        }
+
+        console.log(`Number 1: ${num}`);
+        console.log(`operator: ${operator}`);
+        console.log(`Number 2: ${num2}`);
     })
 })
 
 op.forEach(btn => {
     btn.addEventListener('click', e=> {
+        if (sym.test(num)) {num = num.substring(0, num.length)}
+
         operator = e.target.textContent;
+        output.textContent = operator;
+        console.log(operator);
     })
 })
 
@@ -31,46 +49,33 @@ clear.addEventListener('click', () => {
 
 // Equal button
 equal.addEventListener('click', () => {
-    operate(num);
+    operate(num, num2, operator);
 });
 
 
-function operate(str) {
-    let a,b;
+function operate(n1, n2, op) {
     let result;
 
-    switch (operator) {
+    switch (op) {
         case 'x': 
-            a = str.split('x')[0];
-            b = str.split('x')[1];
-            b = str = b.substring(0, b.length - 1);
-            result = a * b;
+            result = n1 * n2;
             num = result;
             output.textContent = result;
             break;
         case '÷': 
-            a = str.split('÷')[0];
-            b = str.split('÷')[1];
-            b = str = b.substring(0, b.length - 1);
-            result = a / b;
+            result = n1 / n2;
             num = result;
             output.textContent = result;
             break;
         case '+':
-            a = str.split('+')[0];
-            b = str.split('+')[1];
-            b = str = b.substring(0, b.length - 1);
-            a = Number(a);
-            b = Number(b);
-            result = a + b;
+            n1 = Number(n1);
+            n2 = Number(n2);
+            result = n1 + n2;
             num = result;
             output.textContent = result;
             break;
         case '-':
-            a = str.split('-')[0];
-            b = str.split('-')[1];
-            b = str = b.substring(0, b.length - 1);
-            result = a - b;
+            result = n1 - n2;
             num = result;
             output.textContent = result;
             break;
