@@ -1,86 +1,85 @@
-const buttons = document.querySelectorAll('.num');
+const numbers = document.querySelectorAll('.num');
+const operators = document.querySelectorAll('.op');
 const output = document.querySelector('.output');
 const clear = document.querySelector('.clear');
 const equal = document.querySelector('.eq');
-const op = document.querySelectorAll('.func');
-let num = "";
-let num2 = "";
-let operator = "";
-let result = 0;
-let sym = /[ -\/:-@\[-\`÷x{-~]/gm
 
-buttons.forEach(btn => {
-    btn.addEventListener('click', e => {
-        // num = e.target.textContent;
-        // output.textContent = num;
+let number = "";
+let number2 = "";
+let operator = "";
+let result = "";
+let sym = /[ -\/:-@\[-\`รทx{-~]/gm
+
+
+
+// NUMBERS
+numbers.forEach(num => {
+    num.addEventListener('click', (e) => {
         
-        if (num.length !== 0 && operator.length !== 0) {
-            num2 += e.target.textContent;
-            output.textContent = num2;
+        if (number.length !== 0 && operator.length !== 0) {
+            number2 += e.target.textContent;
+            output.textContent = number2;
         }
         else {
-            num += e.target.textContent;
-            output.textContent = num;
+            number += e.target.textContent;
+            output.textContent = number;
         }
+        
+        
 
-        console.log(`Number 1: ${num}`);
-        console.log(`operator: ${operator}`);
-        console.log(`Number 2: ${num2}`);
+        console.log(`Num 1: ${number}`);
+        console.log(`Opera: ${operator}`);
+        console.log(`Num 2: ${number2}`);
     })
 })
 
-op.forEach(btn => {
-    btn.addEventListener('click', e=> {
-        if (sym.test(num)) {num = num.substring(0, num.length)}
+// OPERATORS
+operators.forEach(op => {
+    op.addEventListener('click', (e) => {
+        if (sym.test(number)) {number = number.substring(0, number.length)}
 
         operator = e.target.textContent;
         output.textContent = operator;
-        console.log(operator);
     })
 })
 
-
-
-// Clear button
+// CLEAR
 clear.addEventListener('click', () => {
-    output.textContent = "0000";
-    num2 = ""
+    number = "";
+    number2 = "";
     operator = "";
-    num = "";
+    output.textContent = "0";
 })
 
-// Equal button
-equal.addEventListener('click', () => {
-    operate(num, num2, operator);
-});
-
+// CALCULATE 
+equal.addEventListener('click', ()=>{
+    operate(number, number2, operator);
+    console.log(`Num 1: ${number}`);
+        console.log(`Opera: ${operator}`);
+        console.log(`Num 2: ${number2}`);
+})
 
 function operate(n1, n2, op) {
-    let result;
-
-    switch (op) {
-        case 'x': 
+    switch(op) {
+        case 'x':
             result = n1 * n2;
-            num = result;
+            number = result;
             output.textContent = result;
             break;
-        case '÷': 
+        case '÷':
             result = n1 / n2;
-            num = result;
+            number = result;
             output.textContent = result;
             break;
         case '+':
-            n1 = Number(n1);
-            n2 = Number(n2);
-            result = n1 + n2;
-            num = result;
+            result = +n1 + +n2;
+            number = result;
             output.textContent = result;
             break;
         case '-':
             result = n1 - n2;
-            num = result;
+            number = result;
             output.textContent = result;
             break;
-
     }
 }

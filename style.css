@@ -1,51 +1,50 @@
 
-.calculator {
-    outline: solid black;
-    height: 700px;
-    width: 500px;
-    margin: auto;
-    text-align: center;
+
+.content {
+    outline: black solid;
     display: flex;
     flex-direction: column;
+    margin: auto;
+    height: 700px;
+    width: 500px;
     background-color: #1C1C1C;
-}
 
-.calculator > div {
-    flex: 1 1 auto;
 }
 
 .output {
-    height: 200px;
+    flex: 1 0 auto;
+    display: flex;
     color: white;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: flex-end;
+    font-size: 90px;
+    word-break: break-all;
+    background-color: #505050;
     width: 500px;
-    font-size: 70px;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
+    height: 20px;
+    
 }
+
 
 .buttons {
+    flex: 2 0 auto;
     display: flex;
-    flex-wrap: wrap;
     width: 500px;
-    justify-content: center;
+    flex-wrap: wrap;
+
+
 }
 
-
-.buttons > div {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 5px;
-    color:white;
-    font-size: 25px;
+.btn, .num, .fc, .op {
+    color: white;
+    font-size: 30px;
     font-weight: 900;
 }
 
-.num, .func, .eq {
+.btn {
+    flex: 1 1 auto;
+    outline: black solid 1px;
+    width: 125px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,14 +54,20 @@
     background-color: #505050;
 }
 
-.func, .eq {
-    background-color: #ff9500;
+.fc {
+    background-color: #D4D4D2;
+    color: black;
 }
 
-.btn:hover {
-    filter: brightness(120%);
+.op, .eq {
+    background-color: #FF9500;
 }
 
-.eq {
-    align-self: flex-end;
+.zero {
+    width: 250px;
+}
+
+.buttons>:hover {
+    filter: brightness(125%);
+    cursor: crosshair;
 }
