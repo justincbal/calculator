@@ -17,10 +17,14 @@
 .output {
     height: 200px;
     color: white;
-    font-size: 70px;
-    display: flex;
     justify-content: center;
     align-items: center;
+    width: 500px;
+    font-size: 70px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .buttons {
