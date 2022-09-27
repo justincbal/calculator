@@ -71,3 +71,28 @@
     filter: brightness(125%);
     cursor: crosshair;
 }
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer img {
+    width: 50px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
