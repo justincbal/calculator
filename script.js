@@ -3,11 +3,13 @@ const operators = document.querySelectorAll('.op');
 const output = document.querySelector('.output');
 const clear = document.querySelector('.clear');
 const equal = document.querySelector('.eq');
+const sign = document.querySelector('.sign');
 
 let number = "";
 let number2 = "";
 let operator = "";
 let result = "";
+let positive = true;
 let sym = /[ -\/:-@\[-\`รทx{-~]/gm
 
 
@@ -36,7 +38,12 @@ numbers.forEach(num => {
 // OPERATORS
 operators.forEach(op => {
     op.addEventListener('click', (e) => {
-        if (sym.test(number)) {number = number.substring(0, number.length)}
+        const arr = Array.from(number);
+        console.log(arr);
+        console.log(arr[arr.length]);
+        console.log(arr[arr.length-1]);
+        if (sym.test(arr[arr.length - 1])) {number = number.substring(0, number.length)}
+        
 
         operator = e.target.textContent;
         output.textContent = operator;
@@ -49,6 +56,30 @@ clear.addEventListener('click', () => {
     number2 = "";
     operator = "";
     output.textContent = "0";
+})
+
+// Sign
+sign.addEventListener('click', ()=>{
+    if (number.length !== 0 && operator.length !== 0) {
+        if (number2 < 0) {
+            number2 = Math.abs(number2);
+            output.textContent = number2;
+        }
+        else {
+            number2 = -Math.abs(number2);
+            output.textContent = number2;
+        }
+    }
+    else {
+        if (number < 0) {
+            number = Math.abs(number);
+            output.textContent = number;
+        }
+        else {
+            number = -Math.abs(number);
+            output.textContent = number;
+        }
+    }
 })
 
 // CALCULATE 
