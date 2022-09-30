@@ -19,10 +19,14 @@ numbers.forEach(num => {
     num.addEventListener('click', (e) => {
         
         if (number.length !== 0 && operator.length !== 0) {
+            if(result.length != 0) {
+                number2 = "";
+            }
             number2 += e.target.textContent;
             output.textContent = number2;
         }
         else {
+            
             number += e.target.textContent;
             output.textContent = number;
         }
@@ -42,7 +46,7 @@ operators.forEach(op => {
         console.log(arr);
         console.log(arr[arr.length]);
         console.log(arr[arr.length-1]);
-        if (sym.test(arr[arr.length - 1])) {number = number.substring(0, number.length)}
+        //if (sym.test(arr[arr.length - 1])) {number = number.substring(0, number.length)}
         
 
         operator = e.target.textContent;
